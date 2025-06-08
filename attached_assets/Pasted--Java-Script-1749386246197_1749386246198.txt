@@ -1,0 +1,18 @@
+Список использованной литературы и интернет-источников
+
+Бужинская, Н. В. Интерпретатор Java Script с элементами обучения / Н. В. Бужинская, В. В. Драчев. – М.: 2021. – 64 с.
+Енилеева, Д. А. Разработка методического пособия по Java-Script / Д. А. Енилеева // Математика, информатика, компьютерные науки, моделирование, образование: сб. науч. трудов Всероссийской научно-практической конференции МИКМО-2018 и Таврической научной школы-конференции студентов и молодых специалистов по математике и информатике. – 2018. – С. 147-150.
+Жидков, И. В., Данилюк, В. А., Гриценко, Е. А., Радин, П. К., Цыганок, О. В., Шубенин, А. А. Анализатор исходных текстов программ, написанных на языке Java Script (Sourcean-JS) / И. В. Жидков [и др.]. – М.: 2022. – 48 с.
+Кадура, Е. В., Глущенко, Д. С. Разработка CMS системы на основе PHP, MySQL, HTML, CSS, Java Script / Е. В. Кадура, Д. С. Глущенко // Информационные технологии и высокопроизводительные вычисления: материалы VI Международной научно-практической конференции. – Хабаровск, 2021. – С. 103-110.
+Литвинов, В. А. Модули Java Script для тренажеров сервисов ИСОД / В. А. Литвинов. – М.: 2024. – 50 с.
+Махаматжанов, Н. М., Туратбек кызы, Г., Зикирбай кызы, А. HTML, PHP, Java Script жана CSS каражаттарынын жардамы менен web-бетти түзүүдө колдонулуучу инструменттер / Н. М. Махаматжанов, Г. Туратбек кызы, А. Зикирбай кызы. // Вестник Жалал-Абадского государственного университета. – 2023. – С. 294-299.
+Мейер, В. More Than Diacritics: Writing, Power, and the Porosity of Script and Language in Java / В. Мейер // Journal of Southeast Asian Studies. – 2022. – Т. 53. – С. 356-358.
+Митан, К. И., Барта, Э., Филип, П., Драгичи, К., Капрою, М. Т., Мориарти, Р. Java Script programs for calculation of dihedral angles with manifold equations / К. И. Митан [и др.]. // Science Journal of Chemistry. – 2024. – Т. 12. – С. 42-54.
+Останин, М. Л. Применение механизма "Сигнал - слот" с Java Script / М. Л. Останин. – М.: 2020. – 32 с.
+Санчес Пинеда, А. Exploring Java Script and root technologies to create web-based atlas analysis and monitoring tools / А. Санчес Пинеда // Journal of Physics: Conference Series. – 2015. – Т. 664. – С. 072043.
+Саури, С., Дви Керниаван, С. Pembuatan Bot Telegram dengan Java Script untuk mempermudah pencarian data customer di PT Telkom Akses / С. Саури, С. Дви Керниаван. // Simtek: Jurnal Sistem Informasi dan Teknik Komputer. – 2024. – Т. 9. – С. 62-67.
+Симонов, В. С. Проектирование информационных систем по управлению заявками для обслуживания магазинов на языках Java Script и Java / В. С. Симонов // Вузовская наука в современных условиях: сб. материалов 57-й научно-технической конференции. – Ульяновск, 2023. – С. 186-188.
+Фаркуте, С. С. Low bandwidth web based application platform using asynchronous Java Script variables (AJAV) / С. С. Фаркуте. – М.: 2005. – 45 с.
+Шабельников, В. Exploring Java Script and root technologies to create web-based atlas analysis and monitoring tools / В. Шабельников // Journal of Physics: Conference Series. – 2015. – Т. 664. – С. 072043.
+Эгусфиан, Н., Нуграха, А. E-book limitation with library portable document format Java Script for accessing digital library / Н. Эгусфиан, А. Нуграха // Compiler. – 2021. – Т. 10. – № 1. – 1 с.
+Яшин, Р. И., Тимофеев, Ю. С. Web Application Using HTML, CSS, Java Script and Java / Р. И. Яшин, Ю. С. Тимофеев // International Journal of Innovative Research in Engineering. – 2023. – С. 124-127.
