@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}КиноБронь - Выберите фильм{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="display-4 fw-bold text-white mb-4">Добро пожаловать в КиноБронь</h1>
+                <p class="lead text-white-50 mb-4">Выберите фильм и забронируйте билеты онлайн</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="mb-4">Сейчас в кино</h2>
+            
+            {% if movies %}
+                <div class="row g-4">
+                    {% for movie in movies %}
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="movie-card h-100">
+                                <div class="position-relative">
+                                    <img src="{{ movie.poster_url }}" class="movie-poster" alt="{{ movie.title }}">
+                                    <div class="position-absolute top-0 end-0 m-3">
+                                        <span class="badge" style="background-color: var(--kp-orange); font-size: 0.8rem;">{{ movie.age_rating }}</span>
+                                    </div>
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">{{ movie.title }}</h5>
+                                    <div class="movie-meta mb-2">
+                                        <span class="text-muted me-3">
+                                            <i class="bi bi-clock me-1"></i>{{ movie.duration }} мин
+                                        </span>
+                                        <span class="text-warning">
+                                            <i class="bi bi-star-fill me-1"></i>{{ movie.rating }}
+                                        </span>
+                                    </div>
+                                    <p class="text-muted small mb-2">{{ movie.genre }}</p>
+                                    <p class="card-text flex-grow-1 text-secondary">{{ movie.description[:120] }}{% if movie.description|length > 120 %}...{% endif %}</p>
+                                    <a href="{{ url_for('movie_detail', movie_id=movie.id) }}" class="btn btn-primary mt-auto">
+                                        <i class="bi bi-ticket-perforated me-2"></i>Купить билет
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="text-center py-5">
+                    <i class="bi bi-film display-1 text-muted"></i>
+                    <h3 class="mt-3 text-muted">Фильмы не найдены</h3>
+                    <p class="text-muted">В данный момент нет доступных фильмов для бронирования</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

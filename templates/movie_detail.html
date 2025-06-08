@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}{{ movie.title }} - КиноБронь{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-4">
+            <img src="{{ movie.poster_url }}" class="img-fluid rounded shadow" alt="{{ movie.title }}">
+        </div>
+        <div class="col-lg-8">
+            <h1 class="display-5 fw-bold">{{ movie.title }}</h1>
+            <div class="mb-3">
+                <span class="badge bg-primary me-2">{{ movie.age_rating }}</span>
+                <span class="text-muted">
+                    <i class="bi bi-clock"></i> {{ movie.duration }} мин
+                    <span class="mx-2">|</span>
+                    <i class="bi bi-star-fill text-warning"></i> {{ movie.rating }}
+                    <span class="mx-2">|</span>
+                    {{ movie.genre }}
+                </span>
+            </div>
+            <p class="lead">{{ movie.description }}</p>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="mb-4">Расписание сеансов</h3>
+            
+            {% if showtimes_by_date %}
+                {% for show_date, showtimes in showtimes_by_date.items() %}
+                    <div class="showtime-date-group mb-4">
+                        <h5 class="text-primary mb-3">
+                            <i class="bi bi-calendar3"></i> {{ show_date|format_date }}
+                        </h5>
+                        <div class="row">
+                            {% for showtime in showtimes %}
+                                <div class="col-lg-4 col-md-6 mb-3">
+                                    <div class="card showtime-card">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                                <h6 class="card-title mb-0">{{ showtime.show_time|format_time }}</h6>
+                                                <span class="badge bg-secondary">{{ showtime.hall.name }}</span>
+                                            </div>
+                                            <p class="card-text small text-muted mb-2">
+                                                <i class="bi bi-geo-alt"></i> {{ showtime.hall.cinema.name }}
+                                            </p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <strong>от {{ showtime.price }} ₽</strong>
+                                                    {% if showtime.vip_price %}
+                                                        <br><small class="text-muted">VIP: {{ showtime.vip_price }} ₽</small>
+                                                    {% endif %}
+                                                </div>
+                                                <a href="{{ url_for('showtime_detail', showtime_id=showtime.id) }}" 
+                                                   class="btn btn-primary btn-sm">
+                                                    Выбрать места
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="text-center py-5">
+                    <i class="bi bi-calendar-x display-1 text-muted"></i>
+                    <h4 class="mt-3 text-muted">Сеансы не найдены</h4>
+                    <p class="text-muted">В ближайшее время нет доступных сеансов для этого фильма</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

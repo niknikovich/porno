@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Бронирование успешно - КиноБронь{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="mb-4">
+                        <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+                    </div>
+                    
+                    <h2 class="text-success mb-3">Бронирование успешно!</h2>
+                    <p class="lead">Ваши билеты забронированы</p>
+                    
+                    <div class="card bg-light mb-4">
+                        <div class="card-body">
+                            <h5>Номер бронирования</h5>
+                            <h3 class="text-primary">{{ booking.booking_number }}</h3>
+                        </div>
+                    </div>
+
+                    <!-- Booking Details -->
+                    <div class="row text-start">
+                        <div class="col-md-6">
+                            <h6>Детали бронирования:</h6>
+                            <p class="mb-1"><strong>Фильм:</strong> {{ booking.showtime.movie.title }}</p>
+                            <p class="mb-1"><strong>Дата:</strong> {{ booking.showtime.show_date|format_date }}</p>
+                            <p class="mb-1"><strong>Время:</strong> {{ booking.showtime.show_time|format_time }}</p>
+                            <p class="mb-1"><strong>Кинотеатр:</strong> {{ booking.showtime.hall.cinema.name }}</p>
+                            <p class="mb-0"><strong>Зал:</strong> {{ booking.showtime.hall.name }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Билеты:</h6>
+                            <p class="mb-1"><strong>Места:</strong> 
+                                {% for seat in booking.get_seats() %}
+                                    <span class="badge bg-primary me-1">{{ seat }}</span>
+                                {% endfor %}
+                            </p>
+                            <p class="mb-1"><strong>Количество:</strong> {{ booking.get_seats()|length }}</p>
+                            <p class="mb-0"><strong>Общая стоимость:</strong> {{ booking.total_price }} ₽</p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle"></i>
+                        <strong>Важно!</strong> Пожалуйста, приходите в кинотеатр за 15 минут до начала сеанса. 
+                        Покажите номер бронирования на кассе или сохраните эту страницу.
+                    </div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <a href="{{ url_for('index') }}" class="btn btn-primary me-md-2">
+                            <i class="bi bi-house"></i> На главную
+                        </a>
+                        <a href="{{ url_for('user_bookings') }}" class="btn btn-outline-primary">
+                            <i class="bi bi-ticket-perforated"></i> Мои билеты
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,646 @@
+/* Cinema Booking System Styles - Kinopoisk Inspired */
+
+:root {
+    --kp-orange: #FF6D00;
+    --kp-orange-hover: #E65100;
+    --kp-yellow: #FFC107;
+    --kp-dark: #1C1C1E;
+    --kp-dark-secondary: #2C2C2E;
+    --kp-gray: #8E8E93;
+    --kp-light-gray: #F2F2F7;
+    --kp-text-primary: #000000;
+    --kp-text-secondary: #6D6D80;
+    --kp-border: #E5E5EA;
+    --kp-success: #34C759;
+    --kp-error: #FF3B30;
+    
+    --seat-available: #F2F2F7;
+    --seat-selected: var(--kp-orange);
+    --seat-booked: var(--kp-error);
+    --seat-vip: var(--kp-yellow);
+    
+    --shadow-small: 0 2px 10px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.12);
+    --shadow-large: 0 8px 30px rgba(0, 0, 0, 0.16);
+    
+    --border-radius: 12px;
+    --border-radius-small: 8px;
+    --border-radius-large: 16px;
+}
+
+body {
+    background-color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.5;
+    color: var(--kp-text-primary);
+}
+
+/* Hero Section - Kinopoisk Style */
+.hero-section {
+    background: linear-gradient(135deg, var(--kp-dark) 0%, var(--kp-dark-secondary) 100%);
+    padding: 4rem 0 6rem 0;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="%23ffffff" opacity="0.05"/><circle cx="80" cy="80" r="1" fill="%23ffffff" opacity="0.03"/><circle cx="40" cy="60" r="1" fill="%23ffffff" opacity="0.04"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Movie Cards - Kinopoisk Style */
+.movie-card {
+    background: #ffffff;
+    border: 1px solid var(--kp-border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-small);
+    position: relative;
+}
+
+.movie-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-large);
+    border-color: var(--kp-orange);
+}
+
+.movie-poster {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover .movie-poster {
+    transform: scale(1.05);
+}
+
+.movie-card .card-body {
+    padding: 1.5rem;
+    background: #ffffff;
+}
+
+.movie-card .card-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--kp-text-primary);
+    line-height: 1.3;
+}
+
+.movie-card .btn-primary {
+    background: var(--kp-orange);
+    border: none;
+    border-radius: var(--border-radius-small);
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.2s ease;
+    text-transform: none;
+}
+
+.movie-card .btn-primary:hover {
+    background: var(--kp-orange-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 109, 0, 0.3);
+}
+
+/* Showtime Cards - Kinopoisk Style */
+.showtime-card {
+    background: #ffffff;
+    border: 1px solid var(--kp-border);
+    border-radius: var(--border-radius-small);
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-small);
+    overflow: hidden;
+}
+
+.showtime-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--kp-orange);
+}
+
+.showtime-card .card-body {
+    padding: 1.25rem;
+}
+
+.showtime-card .btn-primary {
+    background: var(--kp-orange);
+    border: none;
+    border-radius: var(--border-radius-small);
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.showtime-card .btn-primary:hover {
+    background: var(--kp-orange-hover);
+    transform: translateY(-1px);
+}
+
+.showtime-date-group {
+    background: var(--kp-light-gray);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--kp-orange);
+}
+
+.showtime-date-group h5 {
+    color: var(--kp-text-primary);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* Screen */
+.screen-container {
+    perspective: 1000px;
+    margin-bottom: 2rem;
+}
+
+.screen {
+    background: linear-gradient(135deg, #333, #666);
+    color: white;
+    padding: 10px 0;
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    transform: rotateX(-15deg);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+/* Seat Map - Kinopoisk Style */
+.seat-map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--kp-border);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.seat-row {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.row-label {
+    width: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: #666;
+    margin-right: 0.5rem;
+}
+
+.seat {
+    width: 35px;
+    height: 35px;
+    border: 2px solid #dee2e6;
+    background-color: var(--seat-available);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.seat:hover:not(.booked):not(:disabled) {
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.seat.selected {
+    background-color: var(--seat-selected);
+    color: white;
+    border-color: var(--seat-selected);
+    transform: scale(1.05);
+}
+
+.seat.booked {
+    background-color: var(--seat-booked);
+    color: white;
+    border-color: var(--seat-booked);
+    cursor: not-allowed;
+}
+
+.seat.vip {
+    background-color: var(--seat-vip);
+    color: #000;
+    border-color: var(--seat-vip);
+    font-weight: bold;
+}
+
+.seat.vip.selected {
+    background-color: #ff6b00;
+    color: white;
+    border-color: #ff6b00;
+}
+
+.seat.vip::after {
+    content: '★';
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    font-size: 0.6rem;
+    color: #ff6b00;
+}
+
+.aisle {
+    width: 20px;
+}
+
+/* Seat Legend */
+.seat-legend .seat {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+.seat-legend .seat.small {
+    font-size: 0.6rem;
+}
+
+/* Selected Seats Display */
+.selected-seats-display {
+    min-height: 50px;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.selected-seats-display:empty::before {
+    content: 'Выберите места на схеме';
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Price Info */
+.price-info {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--cinema-primary);
+}
+
+/* Booking Status Badges */
+.badge {
+    font-size: 0.8rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .seat {
+        width: 30px;
+        height: 30px;
+        font-size: 0.7rem;
+    }
+    
+    .row-label {
+        width: 25px;
+        font-size: 0.9rem;
+    }
+    
+    .screen {
+        font-size: 0.8rem;
+        padding: 8px 0;
+    }
+    
+    .movie-poster {
+        height: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .seat {
+        width: 25px;
+        height: 25px;
+        font-size: 0.6rem;
+    }
+    
+    .hero-section {
+        padding: 3rem 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Animation for seat selection */
+@keyframes seatPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1.05); }
+}
+
+.seat.selected {
+    animation: seatPulse 0.3s ease-out;
+}
+
+/* Loading state */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Success checkmark animation */
+@keyframes checkmark {
+    0% { 
+        stroke-dasharray: 0 100;
+        stroke-dashoffset: 0;
+    }
+    100% { 
+        stroke-dasharray: 100 0;
+        stroke-dashoffset: 0;
+    }
+}
+
+.success-checkmark {
+    animation: checkmark 0.6s ease-in-out;
+}
+
+/* Card hover effects - Kinopoisk Style */
+.card {
+    background: #ffffff;
+    border: 1px solid var(--kp-border);
+    border-radius: var(--border-radius);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-small);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+.card-header {
+    background-color: var(--kp-light-gray);
+    border-bottom: 1px solid var(--kp-border);
+    padding: 1.25rem 1.5rem;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-footer {
+    background-color: var(--kp-light-gray);
+    border-top: 1px solid var(--kp-border);
+    padding: 1rem 1.5rem;
+}
+
+/* Custom button styles - Kinopoisk Theme */
+.btn-primary {
+    background-color: var(--kp-orange);
+    border-color: var(--kp-orange);
+    border-radius: var(--border-radius-small);
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.2s ease;
+    box-shadow: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--kp-orange-hover);
+    border-color: var(--kp-orange-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 109, 0, 0.3);
+}
+
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: var(--kp-orange-hover);
+    border-color: var(--kp-orange-hover);
+    box-shadow: 0 0 0 0.2rem rgba(255, 109, 0, 0.25);
+}
+
+.btn-outline-secondary {
+    border-color: var(--kp-border);
+    color: var(--kp-text-secondary);
+    border-radius: var(--border-radius-small);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--kp-light-gray);
+    border-color: var(--kp-gray);
+    color: var(--kp-text-primary);
+}
+
+.btn-success {
+    background-color: var(--kp-success);
+    border-color: var(--kp-success);
+    border-radius: var(--border-radius-small);
+}
+
+.btn-success:hover {
+    background-color: #2aa54b;
+    border-color: #2aa54b;
+}
+
+/* Navigation - Kinopoisk Style */
+.navbar {
+    background-color: var(--kp-dark) !important;
+    border-bottom: 1px solid var(--kp-dark-secondary);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff !important;
+    letter-spacing: -0.5px;
+}
+
+.navbar-brand i {
+    color: var(--kp-orange);
+    margin-right: 0.5rem;
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: var(--border-radius-small);
+    transition: all 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-menu {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.dropdown-item {
+    border-radius: var(--border-radius-small);
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background-color: var(--kp-light-gray);
+    color: var(--kp-text-primary);
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+}
+
+/* Form validation */
+.is-invalid {
+    border-color: #dc3545;
+}
+
+.invalid-feedback {
+    display: block;
+}
+
+/* Custom alert styles - Kinopoisk Theme */
+.alert {
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.alert-success {
+    background-color: rgba(52, 199, 89, 0.1);
+    color: var(--kp-success);
+    border-left: 4px solid var(--kp-success);
+}
+
+.alert-danger {
+    background-color: rgba(255, 59, 48, 0.1);
+    color: var(--kp-error);
+    border-left: 4px solid var(--kp-error);
+}
+
+.alert-warning {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #B25E00;
+    border-left: 4px solid var(--kp-yellow);
+}
+
+.alert-info {
+    background-color: rgba(0, 122, 255, 0.1);
+    color: #005FCC;
+    border-left: 4px solid #007AFF;
+}
+
+/* Loading spinner */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Additional Kinopoisk-inspired enhancements */
+body {
+    background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+}
+
+/* Container enhancements */
+.container {
+    max-width: 1200px;
+}
+
+/* Section headers */
+h2, h3, h4 {
+    font-weight: 600;
+    color: var(--kp-text-primary);
+}
+
+/* Badge styles */
+.badge {
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--border-radius-small);
+}
+
+.badge.bg-primary {
+    background-color: var(--kp-orange) !important;
+}
+
+.badge.bg-success {
+    background-color: var(--kp-success) !important;
+}
+
+.badge.bg-warning {
+    background-color: var(--kp-yellow) !important;
+    color: #000 !important;
+}
+
+/* Form controls */
+.form-control {
+    border: 1px solid var(--kp-border);
+    border-radius: var(--border-radius-small);
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease;
+    background-color: #ffffff;
+}
+
+.form-control:focus {
+    border-color: var(--kp-orange);
+    box-shadow: 0 0 0 0.2rem rgba(255, 109, 0, 0.25);
+    background-color: #ffffff;
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--kp-text-primary);
+    margin-bottom: 0.5rem;
+}
+
+/* Text utilities */
+.text-primary {
+    color: var(--kp-orange) !important;
+}
+
+.text-secondary {
+    color: var(--kp-text-secondary) !important;
+}
+
+.text-muted {
+    color: var(--kp-gray) !important;
+}

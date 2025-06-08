@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}Подтверждение бронирования - КиноБронь{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Подтверждение бронирования</h4>
+                </div>
+                <div class="card-body">
+                    <!-- Movie Info -->
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <img src="{{ showtime.movie.poster_url }}" class="img-fluid rounded" alt="{{ showtime.movie.title }}">
+                        </div>
+                        <div class="col-md-9">
+                            <h5>{{ showtime.movie.title }}</h5>
+                            <p class="mb-1">
+                                <i class="bi bi-calendar3"></i> {{ showtime.show_date|format_date }}
+                                <span class="mx-2">|</span>
+                                <i class="bi bi-clock"></i> {{ showtime.show_time|format_time }}
+                            </p>
+                            <p class="mb-1">
+                                <i class="bi bi-geo-alt"></i> {{ showtime.hall.cinema.name }}
+                            </p>
+                            <p class="mb-0">
+                                <i class="bi bi-door-open"></i> {{ showtime.hall.name }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Selected Seats -->
+                    <div class="mb-4">
+                        <h6>Выбранные места:</h6>
+                        <div class="selected-seats-display">
+                            {% for seat in selected_seats %}
+                                <span class="badge bg-primary me-2 mb-2">{{ seat }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <!-- Price Breakdown -->
+                    <div class="mb-4">
+                        <h6>Детали оплаты:</h6>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td>Количество билетов:</td>
+                                        <td class="text-end">{{ selected_seats|length }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Общая стоимость:</strong></td>
+                                        <td class="text-end"><strong>{{ total_price }} ₽</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Confirmation Form -->
+                    <form method="POST" action="{{ url_for('create_booking') }}">
+                        <input type="hidden" name="showtime_id" value="{{ showtime.id }}">
+                        {% for seat in selected_seats %}
+                            <input type="hidden" name="seats" value="{{ seat }}">
+                        {% endfor %}
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="{{ url_for('showtime_detail', showtime_id=showtime.id) }}" 
+                               class="btn btn-outline-secondary me-md-2">
+                                <i class="bi bi-arrow-left"></i> Изменить выбор
+                            </a>
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-check-circle"></i> Подтвердить бронирование
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
